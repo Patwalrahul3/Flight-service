@@ -3,6 +3,11 @@ const router = express.Router();
 
 const {InfoController} = require('../../controllers')
 
-router.get('/info', InfoController.info)
+const airplaneRouter = require('./airplane-routes')
+
+router.use('/airplane', airplaneRouter);
+
+router.get('/info', InfoController.info);
+
 
 module.exports = router;
