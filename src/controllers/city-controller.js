@@ -1,14 +1,13 @@
 const { StatusCodes } = require("http-status-codes");
-const { AirplaneService } = require("../services");
+const { CityService } = require("../services");
 const { ErrorResponse, SuccessResponse } = require("../utils/common");
 
-async function createAirplane(req, res) {
+async function createCity(req, res) {
   try {
-    const airplane = await AirplaneService.createAirplane({
-      modelNumber: req.body.modelNumber,
-      capacity: req.body.capacity,
+    const city = await CityService.createCity({
+      name: req.body.name,
     });
-    SuccessResponse.data = airplane;
+    SuccessResponse.data = city;
 
     return res.status(StatusCodes.CREATED).json(SuccessResponse);
   } catch (error) {
@@ -17,10 +16,10 @@ async function createAirplane(req, res) {
   }
 }
 
-async function getAirplanes(req, res) {
+async function getCities(req, res) {
   try {
-    const airplanes = await AirplaneService.getAirplanes();
-    SuccessResponse.data = airplanes;
+    const cities = await CityService.getCities();
+    SuccessResponse.data = cities;
     return res.status(StatusCodes.OK).json(SuccessResponse);
   } catch (error) {
     ErrorResponse.error = error;
@@ -28,10 +27,10 @@ async function getAirplanes(req, res) {
   }
 }
 
-async function getAirplane(req, res) {
+async function getCity(req, res) {
   try {
-    const airplane = await AirplaneService.getAirplane(req.params.id);
-    SuccessResponse.data = airplane;
+    const city = await CityService.getCity(req.params.id);
+    SuccessResponse.data = city;
     return res.status(StatusCodes.OK).json(SuccessResponse);
   } catch (error) {
     ErrorResponse.error = error;
@@ -39,10 +38,10 @@ async function getAirplane(req, res) {
   }
 }
 
-async function destroyAirplane(req, res) {
+async function destroyCity(req, res) {
   try {
-    const airplanes = await AirplaneService.destroyAirplane(req.params.id);
-    SuccessResponse.data = airplanes;
+    const city = await CityService.destroyCity(req.params.id);
+    SuccessResponse.data = city;
     return res.status(StatusCodes.OK).json(SuccessResponse);
   } catch (error) {
     ErrorResponse.error = error;
@@ -51,8 +50,8 @@ async function destroyAirplane(req, res) {
 } 
 
 module.exports = {
-  createAirplane,
-  getAirplanes,
-  getAirplane,
-  destroyAirplane
+  createCity,
+  getCities,
+  getCity,
+  destroyCity
 };
