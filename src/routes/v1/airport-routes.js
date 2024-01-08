@@ -5,7 +5,7 @@ const router = express.Router();
 
 router.post(
   "/",
-  AirportMiddlewares.validateCreateRequest,
+    AirportMiddlewares.validateCreateRequest,
   AirportController.createAirport
 );
 router.get("/", AirportController.getAirports);

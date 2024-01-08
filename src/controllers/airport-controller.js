@@ -3,6 +3,8 @@ const { AirportService } = require("../services");
 const { ErrorResponse, SuccessResponse } = require("../utils/common");
 
 async function createAirport(req, res) {
+  console.log("Aaaaaaaaaaa", req.body.name)
+
   try {
     const airport = await AirportService.createAirport({
       name: req.body.name,
@@ -10,10 +12,12 @@ async function createAirport(req, res) {
       address: req.body.address,
       cityId: req.body.cityId,
     });
+    console.log("inside controller ", airport);
     SuccessResponse.data = airport;
 
     return res.status(StatusCodes.CREATED).json(SuccessResponse);
   } catch (error) {
+    console.log("catcj")
     ErrorResponse.error = error;
     return res.status(error.statusCode).json(ErrorResponse);
   }

@@ -5,8 +5,10 @@ const { StatusCodes } = require("http-status-codes");
 const airportRepository = new AirportRepository();
 
 async function createAirport(data) {
+  console.log(data);
   try {
     const airport = await airportRepository.create(data);
+    console.log(airport, "inisde service");
     return airport;
   } catch (error) {
     if (error.name == "SequelizeValidationError") {
@@ -72,8 +74,8 @@ async function destroyAirport(id) {
 }
 
 module.exports = {
-    createAirport,
-    getAirports,
-    getAirport,
-    destroyAirport
+  createAirport,
+  getAirports,
+  getAirport,
+  destroyAirport,
 };
