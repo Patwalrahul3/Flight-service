@@ -1,0 +1,34 @@
+stackshare.io
+feature based , component based project structure.
+
+
+Sequalized   package
+------------
+npm i sequelize
+npm i mysql2
+
+
+sequelize-cli package
+---------------------
+npm i sequelize-cli
+
+src -->
+npx sequelize init
+npx sequelize create  
+npx sequelize model:generate --name Airplane --attributes modelNumber:string,capacity:integer
+
+
+seder
+npx sequelize seed:generate --name add-airplanes
+npx sequelize db:seed:all
+npx sequelize db:seed:undo:all
+
+Flight
+----------
+npx sequelize model:generate --name Flight --attributes flightNumber:string,airplaneId:integer,departureAirportId:integer,arrivalAirportId:integer,arrivalTime:date,departureTime:date,price:integer,totalSeats:integer
+
+
+// to check for CONSTRAINT_SCHEMA
+
+select * from information_schema.key_column_usage where TABLE_NAME= 'flights' and CONSTRAINT_SCHEMA='flights';
+
