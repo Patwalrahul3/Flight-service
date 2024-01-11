@@ -32,3 +32,11 @@ npx sequelize model:generate --name Flight --attributes flightNumber:string,airp
 
 select * from information_schema.key_column_usage where TABLE_NAME= 'flights' and CONSTRAINT_SCHEMA='flights';
 
+// Seat
+npx sequelize model:generate --name Seat --attributes airplaneId:integer,row:integer,col:string,type:string
+
+
+
+npx sequelize db:migrate                        Run pending migrations
+
+npx sequelize db:seed --seed 20240111171721-add-seats.js
